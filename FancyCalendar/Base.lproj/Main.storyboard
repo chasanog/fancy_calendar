@@ -1,24 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Calendar Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="FCalendarController" customModule="FancyCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ql7-C3-Ecc" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="44" width="414" height="300"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="prevButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dg3-jj-jkk">
+                                        <rect key="frame" x="15" y="30" width="49.5" height="22"/>
+                                        <accessibility key="accessibilityConfiguration" label="prevButton"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="eJB-si-D9A"/>
+                                        </constraints>
+                                        <state key="normal" title="Prev" image="chevron.left" catalog="system"/>
+                                        <connections>
+                                            <action selector="previousButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yid-b1-nsR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="nextButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lmz-av-mgo">
+                                        <rect key="frame" x="378.5" y="30" width="50.5" height="22"/>
+                                        <accessibility key="accessibilityConfiguration" label="next Button"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="4aT-Cc-77z"/>
+                                        </constraints>
+                                        <state key="normal" title="Next" image="chevron.right" catalog="system"/>
+                                        <connections>
+                                            <action selector="nextButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AWn-L6-AHZ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="9uN-Xh-WIh"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lmz-av-mgo" secondAttribute="trailing" constant="-15" id="eDr-qI-nIW"/>
+                                    <constraint firstItem="dg3-jj-jkk" firstAttribute="leading" secondItem="ql7-C3-Ecc" secondAttribute="leading" constant="15" id="ic0-73-L6N"/>
+                                    <constraint firstItem="Lmz-av-mgo" firstAttribute="top" secondItem="ql7-C3-Ecc" secondAttribute="top" constant="30" id="mMB-30-6dy"/>
+                                    <constraint firstItem="dg3-jj-jkk" firstAttribute="top" secondItem="ql7-C3-Ecc" secondAttribute="top" constant="30" id="tcO-4L-guP"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="titleWeekendColor">
+                                        <color key="value" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="titleTextSize">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="subtitleTextSize">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="weekdayTextSize">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="headerTitleTextSize">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="headerHeight">
+                                        <real key="value" value="75"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Y0T-Eg-r98">
+                                <rect key="frame" x="0.0" y="352" width="414" height="510"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ql7-C3-Ecc" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="DZK-Jw-tEb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ql7-C3-Ecc" secondAttribute="trailing" id="HNL-57-3aZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ql7-C3-Ecc" secondAttribute="trailing" id="IxG-A0-Dxg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Y0T-Eg-r98" secondAttribute="bottom" id="LRJ-4P-lzG"/>
+                            <constraint firstItem="ql7-C3-Ecc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ZK5-ec-Yl0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Y0T-Eg-r98" secondAttribute="trailing" id="gXQ-cU-cgH"/>
+                            <constraint firstItem="Y0T-Eg-r98" firstAttribute="top" secondItem="ql7-C3-Ecc" secondAttribute="bottom" constant="8" id="hKN-9d-Jm5"/>
+                            <constraint firstItem="Y0T-Eg-r98" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mpc-pR-DOq"/>
+                            <constraint firstItem="ql7-C3-Ecc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wpo-y1-fTk"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="calTableView" destination="Y0T-Eg-r98" id="qrt-uP-7uY"/>
+                        <outlet property="calendar" destination="ql7-C3-Ecc" id="oID-HJ-lkS"/>
+                        <outlet property="nextButton" destination="Lmz-av-mgo" id="nkq-pj-cGp"/>
+                        <outlet property="prevButton" destination="dg3-jj-jkk" id="t0Z-VV-m3a"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <image name="chevron.right" catalog="system" width="96" height="128"/>
+    </resources>
 </document>
