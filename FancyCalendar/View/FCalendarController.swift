@@ -13,18 +13,30 @@ import FSCalendar
  FCalendarView is a reusable Calendar class which is implementing a calendar using the Framework FSCalendar
  and customizing the view according to the requirements.
  */
-class FCalendarController: UIViewController, UITableViewDelegate, UITableViewDataSource, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
+class FCalendarController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     
-    var calViewModels = [FCalendarVM]()
-    let cellId = "cellId"
     
+    //mapping label text with Model attributes using viewModel
+    var calViewModels: FCalendarVM! {
+        didSet {
+            dueDateNameLabel.text = calViewModels.calData.dueDateNameLabel
+            dueDateLabel.text = calViewModels.calData.dueDate
+            
+            selectedDateNameLabel.text = calViewModels.calData.selectedDateNameLabel
+            selectedDateLabel.text = calViewModels.calData.selectedDate
+            
+        }
+    }
+    
+    //simple date formatter
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yyyy"
         return formatter
     }()
     
-    var formatter = DateFormatter()
+    // for haptic feedbacks when tap action happens
+    let impact = UIImpactFeedbackGenerator()
     
     var selectedDate: String = ""
     var dueDate: String = "09/21/2020"
@@ -33,7 +45,11 @@ class FCalendarController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet var calendar: FSCalendar!
     @IBOutlet weak var prevButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var calTableView: UITableView!
+    @IBOutlet weak var selectedDateNameLabel: UILabel!
+    @IBOutlet weak var selectedDateLabel: UILabel!
+    @IBOutlet weak var dueDateNameLabel: UILabel!
+    @IBOutlet weak var dueDateLabel: UILabel!
+    
     
     private var currPage: Date?
     
@@ -43,11 +59,15 @@ class FCalendarController: UIViewController, UITableViewDelegate, UITableViewDat
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let calData = CalendarData(dueDate: dueDate, selectedDate: selectedDate, selectedDateNameLabel: "Selected Date", dueDateNameLabel: "Due Date")
+        calViewModels = FCalendarVM(calData: calData)
         setupCalendar()
-        setupTableView()
+        setupLabels()
+        labelTapAction(label: selectedDateLabel)
+        labelTapAction(label: dueDateLabel)
     }
     
-    //setting up FSCalendar
+    //setting up FSCalendar and the view
     fileprivate func setupCalendar() {
         calendar.delegate = self
         calendar.dataSource = self
@@ -57,14 +77,63 @@ class FCalendarController: UIViewController, UITableViewDelegate, UITableViewDat
         calendar.bringSubviewToFront(nextButton)
     }
     
+    //setting up the Labesl below the calendar
+    fileprivate func setupLabels() {
+        selectedDateNameLabel.textColor = UIColor.gray
+        dueDateNameLabel.textColor = UIColor.gray
+        selectedDateLabel.textColor = UIColor.blue
+        dueDateLabel.textColor = UIColor.blue
+        selectedDateLabel.attributedText = NSAttributedString(string: "Text", attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
+        dueDateLabel.attributedText = NSAttributedString(string: dueDate, attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
+        updateLabels()
+    }
+    
+    //handles the jump to the selected date below the calendar for selected and due date
+    @objc func tapAction(tapGesture: TapGestureHelper) {
+        if tapGesture.label == selectedDateLabel {
+            calendar.deselect(dateFormatter.date(from: selectedDate)!)
+            calendar.select(dateFormatter.date(from: selectedDate))
+            self.currPage = dateFormatter.date(from: selectedDate)
+        } else if tapGesture.label == dueDateLabel {
+            if calendar.selectedDate == dateFormatter.date(from: dueDate) {
+                calendar.deselect(dateFormatter.date(from: dueDate)!)
+            }
+            calendar.select(dateFormatter.date(from: dueDate))
+            self.currPage = dateFormatter.date(from: dueDate)
+            selectedDate = dueDate
+            updateLabels()
+        }
+        impact.impactOccurred()
+        
+    }
+    
+    //handles the tap on a label which can be given as a parameter @label
+    func labelTapAction(label: UILabel) {
+        let gestureRecognizer = TapGestureHelper.init(target: self, action: #selector(tapAction))
+        gestureRecognizer.label = label
+        gestureRecognizer.label.isUserInteractionEnabled = true
+        gestureRecognizer.label.addGestureRecognizer(gestureRecognizer)
+    }
+    
+    //updating the Label Selected Date
+    func updateLabels() {
+        if selectedDate == "" {
+            selectedDateLabel.text = " "
+        } else {
+            selectedDateLabel.text = selectedDate
+        }
+    }
+    
     // custom chevron button to go one month back
     @IBAction func previousButton(_ sender: Any) {
         self.customPageMover(moveNext: false)
+        impact.impactOccurred()
     }
     
     // custom chevron button to go to the next month
     @IBAction func nextButton(_ sender: Any) {
         self.customPageMover(moveNext: true)
+        impact.impactOccurred()
     }
     
     // below is the logic to detect and perform the move of pages for next and previous months
@@ -72,34 +141,9 @@ class FCalendarController: UIViewController, UITableViewDelegate, UITableViewDat
         let cal = Calendar.current
         var dateComponents = DateComponents()
         dateComponents.month = moveNext ? 1 : -1
-        
         self.currPage = cal.date(byAdding: dateComponents, to: self.currPage ?? self.today)
         self.calendar.setCurrentPage(self.currPage!, animated: true)
-    }
-    
-    //setting up TableView below the calendar
-    fileprivate func setupTableView() {
-         calTableView.register(DateCell.self, forCellReuseIdentifier: cellId)
-         calTableView.delegate = self
-         calTableView.dataSource = self
-        self.calViewModels = 
-         view.addSubview(calTableView)
-            
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return calViewModels.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! DateCell
-//        let cell = UITableViewCell(style: UITableViewCell.CellStyle.value2, reuseIdentifier: cellId)
-        let calViewModel = calViewModels[indexPath.row]
-        cell.fcalVM = calViewModel
-//        cell.textLabel?.numberOfLines = 2
-//        cell.textLabel?.text = calViewModels
-//        cell.detailTextLabel?.text = selectedDate
-        return cell
+        impact.impactOccurred()
     }
     
     //changing the color of the dueDate on the calendar
@@ -122,8 +166,7 @@ class FCalendarController: UIViewController, UITableViewDelegate, UITableViewDat
     
     //selecting the dueDate and formatting the date
     func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
-        formatter.dateFormat = "MM/dd/yyyy"
-        guard let excludedDate = formatter.date(from: dueDate) else {return true}
+        guard let excludedDate = dateFormatter.date(from: dueDate) else {return true}
         if date.compare(excludedDate) == .orderedSame {
             return true
         }
@@ -139,8 +182,9 @@ class FCalendarController: UIViewController, UITableViewDelegate, UITableViewDat
         } else {
             calendar.appearance.selectionColor = UIColor.lightGray
         }
+        impact.impactOccurred()
         selectedDate = dateFormatter.string(from: date)
-        calTableView.reloadData()
+        updateLabels()
     }
 }
 

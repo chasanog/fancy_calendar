@@ -8,18 +8,14 @@
 
 import UIKit
 
+/*
+ ViewModel for the calendar Model
+ */
 struct FCalendarVM {
     
-    var dateName: String = ""
-    var selectedDate: String = ""
-    let accessoryType: UITableViewCell.AccessoryType
+    let calData: CalendarData
     
-    init(fcal: FCalendar) {
-        for name in fcal.dateName {
-            self.dateName = name
-        }
-//        self.dateName = fcal.dateName
-        self.selectedDate = fcal.selectedDate
-        accessoryType = .none
+    init(calData: CalendarData) {
+        self.calData = calData
     }
 }

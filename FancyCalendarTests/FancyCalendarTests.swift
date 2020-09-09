@@ -10,6 +10,8 @@ import XCTest
 @testable import FancyCalendar
 
 class FancyCalendarTests: XCTestCase {
+    let calendarData = CalendarData(dueDate: "09/12/2020", selectedDate: "09/22/2020", selectedDateNameLabel: "Test Selected Date", dueDateNameLabel: "Test Due Date")
+    
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -19,16 +21,22 @@ class FancyCalendarTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    //testing ViewModel attributes against the Model
+    func testCalendarViewModel() {
+        
+        let calViewModel = FCalendarVM(calData: calendarData)
+        
+        XCTAssertEqual(calendarData.dueDateNameLabel, calViewModel.calData.dueDateNameLabel)
+        XCTAssertEqual(calendarData.dueDate, calViewModel.calData.dueDate)
+        XCTAssertEqual(calendarData.selectedDateNameLabel, calViewModel.calData.selectedDateNameLabel)
+        XCTAssertEqual(calendarData.selectedDate, calViewModel.calData.selectedDate)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    //testing wrong data with data in View Model
+    func testViewModelFailure() {
+        let calViewModel = FCalendarVM(calData: calendarData)
+        
+        XCTAssertNotEqual(calViewModel.calData.dueDate, "22/02/2020")
     }
 
 }

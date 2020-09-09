@@ -9,6 +9,24 @@
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
+		<key>FancyCalendarTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>535BFDEE25063E3000751AA5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>535BFE0425063E3400751AA5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 	</dict>
 </dict>
 </plist>

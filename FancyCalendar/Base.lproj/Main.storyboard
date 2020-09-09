@@ -24,6 +24,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="eJB-si-D9A"/>
                                         </constraints>
+                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <state key="normal" title="Prev" image="chevron.left" catalog="system"/>
                                         <connections>
                                             <action selector="previousButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yid-b1-nsR"/>
@@ -35,6 +36,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="4aT-Cc-77z"/>
                                         </constraints>
+                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <state key="normal" title="Next" image="chevron.right" catalog="system"/>
                                         <connections>
                                             <action selector="nextButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AWn-L6-AHZ"/>
@@ -42,8 +44,12 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <accessibility key="accessibilityConfiguration" label="Calendar View">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="9uN-Xh-WIh"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lmz-av-mgo" secondAttribute="trailing" constant="-15" id="Cvh-cn-QVM"/>
                                     <constraint firstAttribute="trailing" secondItem="Lmz-av-mgo" secondAttribute="trailing" constant="-15" id="eDr-qI-nIW"/>
                                     <constraint firstItem="dg3-jj-jkk" firstAttribute="leading" secondItem="ql7-C3-Ecc" secondAttribute="leading" constant="15" id="ic0-73-L6N"/>
                                     <constraint firstItem="Lmz-av-mgo" firstAttribute="top" secondItem="ql7-C3-Ecc" secondAttribute="top" constant="30" id="mMB-30-6dy"/>
@@ -68,32 +74,96 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="headerHeight">
                                         <real key="value" value="75"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
+                                        <color key="value" cocoaTouchSystemColor="darkTextColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="headerTitleColor">
+                                        <color key="value" cocoaTouchSystemColor="darkTextColor"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Y0T-Eg-r98">
-                                <rect key="frame" x="0.0" y="352" width="414" height="510"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCP-ea-2K3">
+                                <rect key="frame" x="20" y="359" width="108" height="21"/>
+                                <accessibility key="accessibilityConfiguration" label="selectedDateNameLabel"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="yellowLine" translatesAutoresizingMaskIntoConstraints="NO" id="Ts1-8Y-P9e">
+                                <rect key="frame" x="15" y="438" width="1" height="50"/>
+                            </imageView>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="selectedDateDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wsB-2p-KG1">
+                                <rect key="frame" x="20" y="388" width="137.5" height="21"/>
+                                <accessibility key="accessibilityConfiguration" label="selectedDateLabel"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7EM-VA-dDQ">
+                                <rect key="frame" x="20" y="438" width="71.5" height="21"/>
+                                <accessibility key="accessibilityConfiguration" label="dueDateNameLabel"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dueDateDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qkQ-G2-niY">
+                                <rect key="frame" x="20" y="467" width="101" height="21"/>
+                                <accessibility key="accessibilityConfiguration" label="dueDateLabel"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="BlueLine" translatesAutoresizingMaskIntoConstraints="NO" id="TRP-vT-0wo">
+                                <rect key="frame" x="13" y="359" width="2" height="50"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grayLine" translatesAutoresizingMaskIntoConstraints="NO" id="R3r-bI-HMb">
+                                <rect key="frame" x="13" y="420" width="381" height="1"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grayLine" translatesAutoresizingMaskIntoConstraints="NO" id="B0C-lz-Oca">
+                                <rect key="frame" x="13" y="341" width="381" height="10"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Ts1-8Y-P9e" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="39F-SH-QJo"/>
+                            <constraint firstItem="jCP-ea-2K3" firstAttribute="leading" secondItem="TRP-vT-0wo" secondAttribute="trailing" constant="5" id="4Pe-IN-uVF"/>
+                            <constraint firstItem="wsB-2p-KG1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="4Pg-2F-hKL"/>
+                            <constraint firstItem="TRP-vT-0wo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="13" id="5mq-gk-7n4"/>
+                            <constraint firstItem="Ts1-8Y-P9e" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="438" id="8kd-OI-lhx"/>
+                            <constraint firstItem="7EM-VA-dDQ" firstAttribute="top" secondItem="wsB-2p-KG1" secondAttribute="bottom" constant="29" id="AQY-Ik-y8Z"/>
+                            <constraint firstItem="jCP-ea-2K3" firstAttribute="top" secondItem="ql7-C3-Ecc" secondAttribute="bottom" constant="15" id="BqQ-bS-FiR"/>
                             <constraint firstItem="ql7-C3-Ecc" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="DZK-Jw-tEb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ql7-C3-Ecc" secondAttribute="trailing" id="HNL-57-3aZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ql7-C3-Ecc" secondAttribute="trailing" id="IxG-A0-Dxg"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Y0T-Eg-r98" secondAttribute="bottom" id="LRJ-4P-lzG"/>
+                            <constraint firstItem="jCP-ea-2K3" firstAttribute="leading" secondItem="TRP-vT-0wo" secondAttribute="trailing" constant="5" id="Los-CG-f3v"/>
+                            <constraint firstItem="7EM-VA-dDQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="OMn-s6-cF2"/>
+                            <constraint firstItem="TRP-vT-0wo" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="359" id="Q5n-IR-aEC"/>
+                            <constraint firstItem="7EM-VA-dDQ" firstAttribute="leading" secondItem="Ts1-8Y-P9e" secondAttribute="trailing" constant="4" id="UEN-n6-TyP"/>
                             <constraint firstItem="ql7-C3-Ecc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ZK5-ec-Yl0"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Y0T-Eg-r98" secondAttribute="trailing" id="gXQ-cU-cgH"/>
-                            <constraint firstItem="Y0T-Eg-r98" firstAttribute="top" secondItem="ql7-C3-Ecc" secondAttribute="bottom" constant="8" id="hKN-9d-Jm5"/>
-                            <constraint firstItem="Y0T-Eg-r98" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mpc-pR-DOq"/>
+                            <constraint firstItem="R3r-bI-HMb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="13" id="b00-qx-Ztj"/>
+                            <constraint firstItem="jCP-ea-2K3" firstAttribute="top" secondItem="B0C-lz-Oca" secondAttribute="bottom" constant="8" id="bM5-q8-ZlM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="R3r-bI-HMb" secondAttribute="trailing" constant="20" id="brT-iY-OiW"/>
+                            <constraint firstItem="B0C-lz-Oca" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="297" id="dSn-qy-pbn"/>
+                            <constraint firstItem="qkQ-G2-niY" firstAttribute="top" secondItem="7EM-VA-dDQ" secondAttribute="bottom" constant="8" id="ewj-a1-D4V"/>
+                            <constraint firstItem="R3r-bI-HMb" firstAttribute="top" secondItem="wsB-2p-KG1" secondAttribute="bottom" constant="11" id="oMU-Xe-xFI"/>
+                            <constraint firstItem="qkQ-G2-niY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="r1s-Fc-Rwk"/>
+                            <constraint firstItem="B0C-lz-Oca" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="13" id="sNo-mH-MCu"/>
+                            <constraint firstItem="wsB-2p-KG1" firstAttribute="top" secondItem="jCP-ea-2K3" secondAttribute="bottom" constant="8" id="usB-pF-6Aw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="B0C-lz-Oca" secondAttribute="trailing" constant="20" id="viJ-Dq-8A9"/>
+                            <constraint firstItem="7EM-VA-dDQ" firstAttribute="leading" secondItem="Ts1-8Y-P9e" secondAttribute="trailing" constant="4" id="wdO-7M-Sl6"/>
                             <constraint firstItem="ql7-C3-Ecc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wpo-y1-fTk"/>
+                            <constraint firstItem="jCP-ea-2K3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="yee-VC-fOv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="calTableView" destination="Y0T-Eg-r98" id="qrt-uP-7uY"/>
                         <outlet property="calendar" destination="ql7-C3-Ecc" id="oID-HJ-lkS"/>
+                        <outlet property="dueDateLabel" destination="qkQ-G2-niY" id="Bfx-sf-VcT"/>
+                        <outlet property="dueDateNameLabel" destination="7EM-VA-dDQ" id="AWU-6J-H5N"/>
                         <outlet property="nextButton" destination="Lmz-av-mgo" id="nkq-pj-cGp"/>
                         <outlet property="prevButton" destination="dg3-jj-jkk" id="t0Z-VV-m3a"/>
+                        <outlet property="selectedDateLabel" destination="wsB-2p-KG1" id="4lD-wc-Asa"/>
+                        <outlet property="selectedDateNameLabel" destination="jCP-ea-2K3" id="8g0-zq-5Of"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -102,7 +172,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="BlueLine" width="2" height="42"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
+        <image name="grayLine" width="393" height="1"/>
+        <image name="yellowLine" width="1" height="41"/>
     </resources>
 </document>

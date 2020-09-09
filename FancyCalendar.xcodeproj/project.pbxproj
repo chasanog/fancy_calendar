@@ -10,7 +10,7 @@
 		534F695225069B44003D1986 /* Pods_FancyCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 534F695125069B44003D1986 /* Pods_FancyCalendar.framework */; };
 		534F695525069C45003D1986 /* FCalendarVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534F695425069C45003D1986 /* FCalendarVM.swift */; };
 		534F695725069F3C003D1986 /* FCalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534F695625069F3C003D1986 /* FCalendarController.swift */; };
-		534F69592506D287003D1986 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534F69582506D287003D1986 /* DateCell.swift */; };
+		534F69592506D287003D1986 /* CalendarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534F69582506D287003D1986 /* CalendarData.swift */; };
 		535BFDF325063E3000751AA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BFDF225063E3000751AA5 /* AppDelegate.swift */; };
 		535BFDF525063E3000751AA5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BFDF425063E3000751AA5 /* SceneDelegate.swift */; };
 		535BFDF725063E3000751AA5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BFDF625063E3000751AA5 /* ViewController.swift */; };
@@ -18,7 +18,7 @@
 		535BFDFC25063E3400751AA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 535BFDFB25063E3400751AA5 /* Assets.xcassets */; };
 		535BFDFF25063E3400751AA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 535BFDFD25063E3400751AA5 /* LaunchScreen.storyboard */; };
 		535BFE0A25063E3400751AA5 /* FancyCalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535BFE0925063E3400751AA5 /* FancyCalendarTests.swift */; };
-		53E92EC8250680F300AE1DE6 /* FCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E92EC7250680F300AE1DE6 /* FCalendar.swift */; };
+		53ED4F9B2508DE5E001A40BB /* TapGestureHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53ED4F9A2508DE5E001A40BB /* TapGestureHelper.swift */; };
 		704788C55E2F9EC931743F7B /* Pods_FancyCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7869D1DF2F41151D80F01EFF /* Pods_FancyCalendar.framework */; };
 		F2A72A7D314633B0ED9B7AA1 /* Pods_FancyCalendarTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F0DF94750B2C7F3FEDC005 /* Pods_FancyCalendarTests.framework */; };
 /* End PBXBuildFile section */
@@ -42,7 +42,7 @@
 		534F695125069B44003D1986 /* Pods_FancyCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_FancyCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		534F695425069C45003D1986 /* FCalendarVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCalendarVM.swift; sourceTree = "<group>"; };
 		534F695625069F3C003D1986 /* FCalendarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCalendarController.swift; sourceTree = "<group>"; };
-		534F69582506D287003D1986 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
+		534F69582506D287003D1986 /* CalendarData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarData.swift; sourceTree = "<group>"; };
 		535BFDEF25063E3000751AA5 /* FancyCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FancyCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		535BFDF225063E3000751AA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		535BFDF425063E3000751AA5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,7 +55,7 @@
 		535BFE0925063E3400751AA5 /* FancyCalendarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FancyCalendarTests.swift; sourceTree = "<group>"; };
 		535BFE0B25063E3400751AA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5392B81C250696EF00E9F039 /* FSCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FSCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		53E92EC7250680F300AE1DE6 /* FCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCalendar.swift; sourceTree = "<group>"; };
+		53ED4F9A2508DE5E001A40BB /* TapGestureHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGestureHelper.swift; sourceTree = "<group>"; };
 		54F0DF94750B2C7F3FEDC005 /* Pods_FancyCalendarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FancyCalendarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7869D1DF2F41151D80F01EFF /* Pods_FancyCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FancyCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8F14E40E6111885AA883E5D /* Pods-FancyCalendarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyCalendarTests.release.xcconfig"; path = "Target Support Files/Pods-FancyCalendarTests/Pods-FancyCalendarTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -82,18 +82,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		534F695A2507E0BF003D1986 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				534F695625069F3C003D1986 /* FCalendarController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
 		5356DC9E25067E42002FD24A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				53E92EC7250680F300AE1DE6 /* FCalendar.swift */,
+				534F69582506D287003D1986 /* CalendarData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -101,7 +93,7 @@
 		5356DC9F25067E53002FD24A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				534F69582506D287003D1986 /* DateCell.swift */,
+				534F695625069F3C003D1986 /* FCalendarController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -140,7 +132,7 @@
 				5356DCA025067E59002FD24A /* ViewModel */,
 				5356DC9E25067E42002FD24A /* Model */,
 				5356DC9F25067E53002FD24A /* View */,
-				534F695A2507E0BF003D1986 /* Controller */,
+				53ED4F9A2508DE5E001A40BB /* TapGestureHelper.swift */,
 				535BFDF225063E3000751AA5 /* AppDelegate.swift */,
 				535BFDF425063E3000751AA5 /* SceneDelegate.swift */,
 				535BFDF625063E3000751AA5 /* ViewController.swift */,
@@ -355,9 +347,9 @@
 			files = (
 				535BFDF725063E3000751AA5 /* ViewController.swift in Sources */,
 				535BFDF325063E3000751AA5 /* AppDelegate.swift in Sources */,
-				534F69592506D287003D1986 /* DateCell.swift in Sources */,
-				53E92EC8250680F300AE1DE6 /* FCalendar.swift in Sources */,
+				534F69592506D287003D1986 /* CalendarData.swift in Sources */,
 				534F695525069C45003D1986 /* FCalendarVM.swift in Sources */,
+				53ED4F9B2508DE5E001A40BB /* TapGestureHelper.swift in Sources */,
 				535BFDF525063E3000751AA5 /* SceneDelegate.swift in Sources */,
 				534F695725069F3C003D1986 /* FCalendarController.swift in Sources */,
 			);
@@ -521,7 +513,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 32GL9FBSV9;
 				INFOPLIST_FILE = FancyCalendar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -541,7 +533,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 32GL9FBSV9;
 				INFOPLIST_FILE = FancyCalendar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
