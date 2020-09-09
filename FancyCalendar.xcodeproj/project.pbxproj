@@ -56,6 +56,7 @@
 		535BFE0B25063E3400751AA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5392B81C250696EF00E9F039 /* FSCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FSCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		53ED4F9A2508DE5E001A40BB /* TapGestureHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGestureHelper.swift; sourceTree = "<group>"; };
+		53ED4F9C250908F6001A40BB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		54F0DF94750B2C7F3FEDC005 /* Pods_FancyCalendarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FancyCalendarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7869D1DF2F41151D80F01EFF /* Pods_FancyCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FancyCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8F14E40E6111885AA883E5D /* Pods-FancyCalendarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyCalendarTests.release.xcconfig"; path = "Target Support Files/Pods-FancyCalendarTests/Pods-FancyCalendarTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -109,6 +110,7 @@
 		535BFDE625063E3000751AA5 = {
 			isa = PBXGroup;
 			children = (
+				53ED4F9C250908F6001A40BB /* README.md */,
 				535BFDF125063E3000751AA5 /* FancyCalendar */,
 				535BFE0825063E3400751AA5 /* FancyCalendarTests */,
 				535BFDF025063E3000751AA5 /* Products */,
@@ -513,7 +515,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 32GL9FBSV9;
 				INFOPLIST_FILE = FancyCalendar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -533,7 +535,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 32GL9FBSV9;
 				INFOPLIST_FILE = FancyCalendar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

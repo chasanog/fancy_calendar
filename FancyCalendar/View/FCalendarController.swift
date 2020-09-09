@@ -19,11 +19,11 @@ class FCalendarController: UIViewController, FSCalendarDelegate, FSCalendarDataS
     //mapping label text with Model attributes using viewModel
     var calViewModels: FCalendarVM! {
         didSet {
-            dueDateNameLabel.text = calViewModels.calData.dueDateNameLabel
-            dueDateLabel.text = calViewModels.calData.dueDate
+            dueDateNameLabel.text = calViewModels.dueDateNameLabel
+            dueDateLabel.text = calViewModels.dueDate
             
-            selectedDateNameLabel.text = calViewModels.calData.selectedDateNameLabel
-            selectedDateLabel.text = calViewModels.calData.selectedDate
+            selectedDateNameLabel.text = calViewModels.selectedDateNameLabel
+            selectedDateLabel.text = calViewModels.selectedDate
             
         }
     }
@@ -59,7 +59,7 @@ class FCalendarController: UIViewController, FSCalendarDelegate, FSCalendarDataS
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let calData = CalendarData(dueDate: dueDate, selectedDate: selectedDate, selectedDateNameLabel: "Selected Date", dueDateNameLabel: "Due Date")
+        let calData = CalendarData(dueDate: dueDate, selectedDate: selectedDate)
         calViewModels = FCalendarVM(calData: calData)
         setupCalendar()
         setupLabels()

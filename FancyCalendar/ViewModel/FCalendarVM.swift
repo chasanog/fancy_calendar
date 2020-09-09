@@ -13,9 +13,17 @@ import UIKit
  */
 struct FCalendarVM {
     
-    let calData: CalendarData
+//    let calData: CalendarData
+    var selectedDate: String
+    var dueDate: String
+    let dueDateNameLabel: String
+    let selectedDateNameLabel: String
     
     init(calData: CalendarData) {
-        self.calData = calData
+//        self.calData = calData
+        self.selectedDate = calData.selectedDate
+        self.dueDate = calData.dueDate
+        dueDateNameLabel = "Due Date"
+        selectedDateNameLabel = "Selected Date"
     }
 }

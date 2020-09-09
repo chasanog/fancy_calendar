@@ -10,7 +10,7 @@ import XCTest
 @testable import FancyCalendar
 
 class FancyCalendarTests: XCTestCase {
-    let calendarData = CalendarData(dueDate: "09/12/2020", selectedDate: "09/22/2020", selectedDateNameLabel: "Test Selected Date", dueDateNameLabel: "Test Due Date")
+    let calendarData = CalendarData(dueDate: "09/12/2020", selectedDate: "09/22/2020")
     
 
     override func setUpWithError() throws {
@@ -26,17 +26,21 @@ class FancyCalendarTests: XCTestCase {
         
         let calViewModel = FCalendarVM(calData: calendarData)
         
-        XCTAssertEqual(calendarData.dueDateNameLabel, calViewModel.calData.dueDateNameLabel)
-        XCTAssertEqual(calendarData.dueDate, calViewModel.calData.dueDate)
-        XCTAssertEqual(calendarData.selectedDateNameLabel, calViewModel.calData.selectedDateNameLabel)
-        XCTAssertEqual(calendarData.selectedDate, calViewModel.calData.selectedDate)
+//        XCTAssertEqual(calendarData.dueDateNameLabel, calViewModel.dueDateNameLabel)
+        XCTAssertEqual(calendarData.dueDate, calViewModel.dueDate)
+//        XCTAssertEqual(calendarData.selectedDateNameLabel, calViewModel.selectedDateNameLabel)
+        XCTAssertEqual(calendarData.selectedDate, calViewModel.selectedDate)
     }
     
     //testing wrong data with data in View Model
     func testViewModelFailure() {
-        let calViewModel = FCalendarVM(calData: calendarData)
+        var calViewModel = FCalendarVM(calData: calendarData)
+//        calViewModel.selectedDate = "08/20/2020"
+//        calendarData.selectedDate = "09/10/2020"
+        calViewModel.selectedDate = "02/22/2020"
         
-        XCTAssertNotEqual(calViewModel.calData.dueDate, "22/02/2020")
+        XCTAssertNotEqual(calViewModel.dueDate, "22/02/2020")
+        XCTAssertNotEqual(calendarData.selectedDate, calViewModel.selectedDate)
     }
 
 }

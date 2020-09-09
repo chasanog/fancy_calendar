@@ -15,14 +15,10 @@ class CalendarData {
     
     var dueDate: String
     var selectedDate: String
-    var selectedDateNameLabel: String
-    var dueDateNameLabel: String
     
 
-    init(dueDate: String, selectedDate: String, selectedDateNameLabel: String, dueDateNameLabel: String) {
+    init(dueDate: String, selectedDate: String) {
         self.dueDate = dueDate
         self.selectedDate = selectedDate
-        self.selectedDateNameLabel = selectedDateNameLabel
-        self.dueDateNameLabel = dueDateNameLabel
     }
 }
