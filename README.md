@@ -24,7 +24,7 @@ This application is made for coding challenge purpose.
 The Framework FSCalendar is used to build a preset and customizable Calendar for Swift. Installation of the framework was done with the help of CocoaPods.
 
 ### TestFlight
-The App is also available for downloading through Testflight with the following Link: https://testflight.apple.com/join/4MlbkQoI 
+The App is also available for downloading through Testflight with the following Link: https://testflight.apple.com/join/alhkPKkb 
 
 ### Contact
 * For any questions please do not hesitate to contact me at cihan.hasanoglu@icloud.com
