@@ -39,7 +39,7 @@ class FCalendarController: UIViewController, FSCalendarDelegate, FSCalendarDataS
     let impact = UIImpactFeedbackGenerator()
     
     var selectedDate: String = ""
-    var dueDate: String = "09/21/2020"
+    var dueDate: String = "12/01/2020"
     
     
     @IBOutlet var calendar: FSCalendar!
